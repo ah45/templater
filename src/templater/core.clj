@@ -9,11 +9,10 @@
 (defn system [options]
   (component/system-map
     :config options
-    :ring-handler (component/using
-                    (create-handler (:env options) "resources/templates"))
+    :ring-handler (create-handler (:env options) "resources/templates")
     :http-server (component/using
                    (create-server options)
-                   (:handler :ring-handler))))
+                   {:handler :ring-handler})))
 
 (def cli-options
   [["-p" "--port PORT" "Port Number"

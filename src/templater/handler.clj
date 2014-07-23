@@ -33,5 +33,5 @@
     (dissoc this :ring-handler)))
 
 (defn create-handler
-  [environment]
-  (map->Handler environment))
+  [environment static-dir]
+  (map->Handler {:environment environment :static-dir static-dir}))
