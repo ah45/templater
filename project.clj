@@ -4,24 +4,35 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/tools.cli "0.3.1"]
                  [org.clojure/clojurescript "0.0-2268"]
+
+                 [com.keminglabs/cljx "0.4.0"
+                  :exclusions [org.clojure/clojure]]
+
+                 [org.clojure/tools.cli "0.3.1"]
 
                  [com.stuartsierra/component "0.2.1"]
 
-                 [ring/ring-core "1.3.0"]
+                 [ring/ring-core "1.3.0"
+                  :exclusions [commons-codec]]
                  [ring/ring-devel "1.3.0"]
                  [http-kit "2.1.18"]
 
                  ; static
-                 [stasis "2.1.1"]
+                 [stasis "2.1.1"
+                  :exclusions [com.keminglabs/cljx]]
                  [hiccup "1.0.5"]
                  [optimus "0.15.0"]
                  [inliner "0.1.0"]
 
                  ; dynamic
                  [om "0.6.5"]
-                 [kioo "0.4.0"]]
+                 [kioo "0.4.0"
+                  :exclusions [org.clojure/clojurescript
+                               com.cemerick/clojurescript.test
+                               com.facebook/react
+                               om
+                               reagent]]]
 
   :source-paths ["src/clj"]
 
@@ -30,7 +41,8 @@
 
   :jar-exclusions [#"\.(cljx|swp|swo|DS_Store)"]
 
-  :plugins [[com.keminglabs/cljx "0.4.0"]
+  :plugins [[org.clojure/clojurescript "0.0-2268"]
+            [com.keminglabs/cljx "0.4.0"]
             [lein-cljsbuild "1.0.4-SNAPSHOT"]]
 
   :hooks [cljx.hooks]
